@@ -229,6 +229,8 @@
 
   /* ---------- project card ---------- */
 
+  .projects { display: grid; gap: 1.1rem; }
+
   .project {
     background: var(--card);
     border: 1px solid var(--rule);
@@ -241,6 +243,22 @@
     font-size: 1rem;
     font-weight: 500;
     margin: 0 0 0.6rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.4rem 0.75rem;
+  }
+
+  .project h3 .status {
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: 0.1rem 0.4rem;
   }
 
   .project p { margin: 0 0 0.9rem; font-size: 0.95rem; }
@@ -428,26 +446,56 @@
     </div>
   </section>
 
-  <section aria-labelledby="oss">
-    <h2 id="oss">Open source</h2>
-    <div class="project">
-      <h3><a href="https://github.com/aj2210/eloquent-agent">eloquent-agent</a></h3>
-      <p>
-        A read-only Claude agent for Laravel applications. It answers plain-English questions about
-        your data — "how much did we refund last month, by reason?" — by calling tools rather than by
-        writing SQL.
-      </p>
-      <p>
-        That distinction is the whole design. The model emits a structured description of what it
-        wants, and a compiler checks every column and operator against a config allowlist before
-        anything reaches the database. Denied columns cannot be selected, filtered on, sorted by or
-        grouped by, because filtering and grouping leak values that a <code>SELECT</code> alone
-        would not.
-      </p>
-      <div class="chips">
-        <span>PHP 8.2</span><span>Laravel 12</span><span>Tool calling</span>
-        <span>MIT</span><span>32 tests</span>
+  <section aria-labelledby="built">
+    <h2 id="built">Built from scratch</h2>
+    <div class="projects">
+
+      <div class="project">
+        <h3>
+          <a href="https://github.com/aj2210/eloquent-agent">eloquent-agent</a>
+          <span class="status">Open source &middot; MIT</span>
+        </h3>
+        <p>
+          A read-only Claude agent for Laravel applications. It answers plain-English questions about
+          your data — "how much did we refund last month, by reason?" — by calling tools rather than
+          by writing SQL.
+        </p>
+        <p>
+          That distinction is the whole design. The model emits a structured description of what it
+          wants, and a compiler checks every column and operator against a config allowlist before
+          anything reaches the database. Denied columns cannot be selected, filtered on, sorted by or
+          grouped by, because filtering and grouping leak values a <code>SELECT</code> alone would
+          not.
+        </p>
+        <div class="chips">
+          <span>PHP 8.2</span><span>Laravel 12</span><span>Tool calling</span><span>32 tests</span>
+        </div>
       </div>
+
+      <div class="project">
+        <h3>
+          Yaadein
+          <span class="status">Personal product &middot; in progress</span>
+        </h3>
+        <p>
+          A wedding photo gallery where guests find their own photographs by taking a selfie. I built
+          the whole thing — ingest, face indexing, storage and the guest-facing site — and it holds
+          <strong>7,571 photos across 35,382 indexed faces</strong>.
+        </p>
+        <p>
+          The interesting problems were not the machine learning. Photos arrive from several cameras
+          whose clocks disagree, so the timeline has to be reconciled before anything else makes
+          sense. Guests should see themselves and not each other, so private albums sit behind a
+          gated link. And a gallery this size is worthless if it loads slowly: I rewrote the first
+          paint to a third of what it was, and wrote the viewer, the loading states and the
+          face-removal control by hand in plain JavaScript, with no framework.
+        </p>
+        <div class="chips">
+          <span>Python</span><span>Face embeddings</span><span>SQLite</span>
+          <span>Supabase</span><span>Vanilla JS</span>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -476,7 +524,7 @@
       </div>
       <div>
         <dt>Web</dt>
-        <dd>JavaScript, jQuery, Blade, HTML and CSS</dd>
+        <dd>JavaScript, jQuery, Blade, HTML and CSS; front-end performance tuning</dd>
       </div>
       <div>
         <dt>Practice</dt>
